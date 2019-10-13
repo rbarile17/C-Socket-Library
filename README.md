@@ -1,2 +1,2 @@
 # C Socket Library
-Implementazione bella delle socket in C
+Library that simplify the use of TCP socket in winsock and sys/socket.h libraries.
