@@ -8,7 +8,7 @@
 	#include <unistd.h>
 #endif
 
-#include "ClientSocket.h"
+#include "Socket.h"
 
 int Initialize() {
 #if defined WIN32
@@ -35,13 +35,13 @@ char * GetIPAddress(Socket mySocket) {
 	return inet_ntoa(cad.sin_addr);
 }
 
-unsigned short GetPortNumber(Socket mySocket) {
+int GetPortNumber(Socket mySocket) {
 	struct sockaddr_in cad;
 	int cadLen = sizeof(cad);
 
 	getsockname(mySocket, (struct sockaddr *) &cad, &cadLen);
 
-	return ntohs(cad.sin_addr);
+	return (int) (ntohs(cad.sin_port));
 }
 
 Socket Create(){

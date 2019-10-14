@@ -5,7 +5,7 @@ typedef int Socket;
 
 int Initialize();
 char * GetIPAddress(Socket );
-unsigned short GetPortNumber(Socket );
+int GetPortNumber(Socket );
 void ClearWinSock();
 Socket Create();
 int Send(Socket receiver, char * string);
