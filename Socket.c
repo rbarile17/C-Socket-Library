@@ -35,6 +35,15 @@ char * GetIPAddress(ClientSocket mySocket) {
 	return inet_ntoa(cad.sin_addr);
 }
 
+unsigned short GetPortNumber(ClientSocket mySocket) {
+	struct sockaddr_in cad;
+	int cadLen = sizeof(cad);
+
+	getsockname(mySocket, (struct sockaddr *) &cad, &cadLen);
+
+	return ntohs(cad.sin_addr);
+}
+
 ClientSocket Create(){
 	ClientSocket mySocket;
 	mySocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
