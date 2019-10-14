@@ -26,7 +26,7 @@ void ClearWinSock() {
 #endif
 }
 
-char * GetIPAddress(ClientSocket mySocket) {
+char * GetIPAddress(Socket mySocket) {
 	struct sockaddr_in cad;
 	int cadLen = sizeof(cad);
 
@@ -35,7 +35,7 @@ char * GetIPAddress(ClientSocket mySocket) {
 	return inet_ntoa(cad.sin_addr);
 }
 
-unsigned short GetPortNumber(ClientSocket mySocket) {
+unsigned short GetPortNumber(Socket mySocket) {
 	struct sockaddr_in cad;
 	int cadLen = sizeof(cad);
 
@@ -44,14 +44,14 @@ unsigned short GetPortNumber(ClientSocket mySocket) {
 	return ntohs(cad.sin_addr);
 }
 
-ClientSocket Create(){
-	ClientSocket mySocket;
+Socket Create(){
+	Socket mySocket;
 	mySocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	return mySocket;
 }
 
-int Send(ClientSocket receiver, char * string) {
+int Send(Socket receiver, char * string) {
 	int stringLen = strlen(string);
 
 	if (send(receiver, string, stringLen, 0) != stringLen)
@@ -60,10 +60,10 @@ int Send(ClientSocket receiver, char * string) {
 	return 0;
 }
 
-int Receive(ClientSocket sender, char * buffer, int bufferSize){
+int Receive(Socket sender, char * buffer, int bufferSize){
 	return recv(sender, buffer, bufferSize - 1, 0);
 }
 
-void Close(ClientSocket mySocket) {
+void Close(Socket mySocket) {
 	closesocket(mySocket);
 }
