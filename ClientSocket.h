@@ -4,5 +4,6 @@
 typedef int ClientSocket;
 
 int Connect(ClientSocket , char * , int );
+int ConnectByName(ClientSocket , char * , int );
 
 #endif /* CLIENTSOCKET_H_ */

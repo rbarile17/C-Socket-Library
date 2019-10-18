@@ -23,7 +23,7 @@ int Bind(ServerSocket mySocket, char * ip, int port) {
 	return bind(mySocket, (struct sockaddr*) &sad, sizeof(sad));
 }
 
-Socket Accept(ServerSocket mySocket) {
+ClientSocket Accept(ServerSocket mySocket) {
 	struct sockaddr_in cad;
 	int clientLen;
 

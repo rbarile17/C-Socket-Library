@@ -7,6 +7,6 @@ typedef int ServerSocket;
 
 int Listen(ServerSocket , int );
 int Bind(ServerSocket , char * , int );
-Socket Accept(ServerSocket );
+ClientSocket Accept(ServerSocket );
 
 #endif /* SERVERSOCKET_H_ */
