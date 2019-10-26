@@ -27,6 +27,12 @@ int ConnectByName(ClientSocket mySocket, char * name, int port) {
 		return -1;
 	else {
 		struct in_addr* ina = (struct in_addr*) host->h_addr_list[0];
-		return Connect(mySocket, inet_ntoa(*ina), port);
+		struct sockaddr_in sad;
+		memset(&sad, 0, sizeof(sad));
+		sad.sin_family = AF_INET;
+		sad.sin_addr.s_addr = ina->s_addr;
+		sad.sin_port = htons(port);
+
+		return connect(mySocket, (struct sockaddr *) &sad, sizeof(sad));
 	}
 }
